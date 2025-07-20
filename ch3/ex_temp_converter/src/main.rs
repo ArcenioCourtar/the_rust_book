@@ -5,9 +5,9 @@ fn main() {
     println!("Please pass Fahrenheit temp");
     io::stdin()
         .read_line(&mut temp)
-        .expect("Failed to read line");
+        .expect("Failed to read line"); // I want to crash if the line can't be read
 
-    let temp: i32 = match temp.trim().parse() {
+    let temp: i32 = match temp.trim().parse() { //shadowing is funny
         Ok(temp) => temp,
         Err(_) => {
             println!("NUMBER PLS");
