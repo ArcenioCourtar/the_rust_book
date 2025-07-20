@@ -9,7 +9,7 @@ fn main() {
 
     for day_number in num_lines {
         println!("For the {day_number} day of Christmas my true love sent to me");
-        for j in 0..=count {
+        for j in (0..=count).rev() {
             println!("{}", lines[j]);
         }
         println!();
