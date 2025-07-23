@@ -22,10 +22,21 @@ fn main() {
     // perform string modifications before pushing
     let mut translated: Vec<String> = Vec::new();
     for i in words {
-        if ["a", "e", "i", "o", "u"].iter().any(|s| i.starts_with(*s)) {
-            translated.push(i);
+        let mut tmp = i.clone();
+        if ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+            .iter().any(|s| i.starts_with(*s)) {
+            tmp.push_str("-hay");
         } else {
-            translated.push(i);
+            let tmp2 = tmp.remove(0);
+            tmp.push_str("-");
+            tmp.push_str(&tmp2.to_string());
+            tmp.push_str("ay");
         }
+        translated.push(tmp);
+    }
+
+    for i in translated {
+        print!("{i}");
+        print!(" ");
     }
 }
