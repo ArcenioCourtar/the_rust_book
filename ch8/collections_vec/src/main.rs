@@ -1,5 +1,5 @@
-use std::env; // accepting additional arguments
 use std::collections::HashMap;
+use std::env; // accepting additional arguments
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -15,7 +15,6 @@ fn main() {
         nums.push(tmp); // idk how to do proper error handling yet so we crash if input isnt valid
     }
 
-
     nums.sort();
     println!("Median of number list: {}", nums[nums.len() / 2]);
 
@@ -28,7 +27,9 @@ fn main() {
     let mut most_occ = HashMap::new();
     let mut highest = 0;
     for (key, value) in occurences {
-        if value == highest { most_occ.insert(key, value); }
+        if value == highest {
+            most_occ.insert(key, value);
+        }
         if value > highest {
             highest = value;
             most_occ.clear();

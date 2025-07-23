@@ -18,13 +18,15 @@ fn main() {
             words.push(j.to_string());
         }
     }
-    
+
     // perform string modifications before pushing
     let mut translated: Vec<String> = Vec::new();
     for i in words {
         let mut tmp = i.clone();
         if ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
-            .iter().any(|s| i.starts_with(*s)) {
+            .iter()
+            .any(|s| i.starts_with(*s))
+        {
             tmp.push_str("-hay");
         } else {
             let tmp2 = tmp.remove(0);
