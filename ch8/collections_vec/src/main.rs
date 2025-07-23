@@ -15,6 +15,7 @@ fn main() {
         nums.push(tmp); // idk how to do proper error handling yet so we crash if input isnt valid
     }
 
+
     nums.sort();
     println!("Median of number list: {}", nums[nums.len() / 2]);
 
