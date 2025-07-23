@@ -15,7 +15,7 @@ fn main() {
 
         match input.trim() {
             "add" => add_employee(&mut list),
-            "display" => display_list(&mut list),
+            "display" => { sort_list(&mut list); display_list(&list); },
             "exit" => { println!("shutting down"); break; },
             _ => println!("please enter a valid command"),
         }
@@ -35,18 +35,20 @@ fn add_employee(list: &mut HashMap<String, Vec<String>>) {
         .read_line(&mut input.1)
         .expect("failed to read line");
 
-    list.entry(String::from(input.0.trim()))
-        .or_insert(vec![input.1.trim().to_string()]);
+    let node = list.entry(String::from(input.0.trim()))
+        .or_insert(Vec::new());
+    node.push(input.1.trim().to_string());
 }
 
-// should probably split this up in two functions.
-// Do the sorting in another function to retain mutability here
-fn display_list(list: &mut HashMap<String, Vec<String>>) {
-    for (key, val) in list.iter_mut() {
-        println!("department: {key}");
-        val.sort();
+fn display_list(list: &HashMap<String, Vec<String>>) {
+    for (key, val) in list.iter() {
+        println!("----\ndepartment: {key}");
         for i in val {
             println!("{i}");
         }
     }
+}
+
+fn sort_list(list: &mut HashMap<String, Vec<String>>) {
+    for (_key, val) in list.iter_mut() { val.sort(); }
 }
