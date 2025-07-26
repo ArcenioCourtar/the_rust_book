@@ -1,3 +1,20 @@
+// BOOOOOOOORING
+struct Point<T> {
+    x: T,
+    y: T,
+}
+
+impl<T> Point<T> {
+    fn x(&self) -> &T {
+        &self.x
+    }
+}
+
+struct Point2<T, U> {
+    x: T,
+    y: U,
+}
+
 fn main() {
     let number_list = vec![10, 20, 50, 60, 100];
     let char_list = vec!['a', 'p', 'z', 'f', 'k'];
